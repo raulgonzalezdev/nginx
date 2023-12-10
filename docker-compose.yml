@@ -1,14 +1,6 @@
 version: '3.8'
 services:
-  app:
-    build: ../strong-solstice
-    volumes:
-      - /var/www/webapp/strong-solstice:/app
-    restart: unless-stopped
-    environment:
-      - HOST=0.0.0.0
-    networks:
-      - webnet
+ 
 
   nginx:
     image: nginx:latest
@@ -24,6 +16,17 @@ services:
     networks:
       - webnet
 
+  app:
+    build: ../strong-solstice
+    container_name: app
+    volumes:
+      - /var/www/webapp/strong-solstice:/app
+    restart: unless-stopped
+    environment:
+      - HOST=0.0.0.0
+    networks:
+      - webnet
+
   code-server:
     build: ../code
     image: codercom/code-server:latest
@@ -33,7 +36,7 @@ services:
       - PASSWORD=ML!gsx90l02 # Establece la contraseña para code-server
     volumes:   
       #- /var/www/webapp/code:/path/inside/containe
-      - /var/www/webapp/code:/home/coder/projectos # Ajusta según tu necesidad
+      - /var/www/webapp:/home/coder/projectos # Ajusta según tu necesidad
     ports:
       - "8443:8080" # Expone el puerto 8443 del host al puerto 8080 del contenedor
     networks:
