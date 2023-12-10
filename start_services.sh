@@ -3,14 +3,8 @@
 # Nombre de la red Docker
 NETWORK_NAME="webnet"
 
-# Verificar si la red ya existe
-if ! docker network ls | grep -q $NETWORK_NAME; then
-    echo "Creating attachable Docker network: $NETWORK_NAME"
-    # Crear la red Docker como attachable
-    sudo docker network create --attachable $NETWORK_NAME
-else
-    echo "Docker network $NETWORK_NAME already exists"
-fi
+docker network create --attachable $NETWORK_NAME
+
 
 # Iniciar servicios con Docker Compose
 echo "Starting services..."
