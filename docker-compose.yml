@@ -58,7 +58,9 @@ services:
       --webroot-path=/var/www/certbot 
       --email raul.gonzalez@datqbox.com 
       --agree-tos 
-      --no-eff-email 
+      --no-eff-email
+      --non-interactive
+      --expand 
       --staging 
       -d datqbox.com 
       -d www.datqbox.com 
