@@ -9,7 +9,6 @@ services:
       - /var/www/webapp/strong-solstice:/app
     ports:
       - "4321:4321" #
-    restart: unless-stopped
     environment:
       - HOST=0.0.0.0
     networks:
