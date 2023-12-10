@@ -7,7 +7,7 @@ NETWORK_NAME="webnet"
 if ! docker network ls | grep -q $NETWORK_NAME; then
     echo "Creating attachable Docker network: $NETWORK_NAME"
     # Crear la red Docker como attachable
-    docker network create --attachable $NETWORK_NAME
+    sudo docker network create --attachable $NETWORK_NAME
 else
     echo "Docker network $NETWORK_NAME already exists"
 fi
