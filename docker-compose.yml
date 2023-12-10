@@ -61,7 +61,8 @@ services:
       --no-eff-email
       --non-interactive
       --expand 
-      --staging 
+      --staging
+      --break-my-certs  
       -d datqbox.com 
       -d www.datqbox.com 
       -d portafolio.datqbox.com 
