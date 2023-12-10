@@ -72,6 +72,8 @@ services:
       -d pos.datqbox.com
       -d app.datqbox.com
       -d crm.datqbox.com
+    networks:
+      - webnet
 
 networks:
   webnet:
