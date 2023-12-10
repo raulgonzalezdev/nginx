@@ -1,32 +1,5 @@
 #!/bin/bash
 
-# Verificar si Certbot está instalado y si no, instalarlo
-if ! command -v certbot &> /dev/null; then
-    echo "Certbot no está instalado. Instalando..."
-    sudo apt update
-    sudo apt install -y certbot python3-certbot-nginx
-else
-    echo "Certbot ya está instalado."
-fi
-
-# Función para obtener y configurar el certificado SSL si no existe
-obtener_certificado() {
-    dominio=$1
-    if sudo certbot certificates | grep -q "Domains: $dominio"; then
-        echo "El certificado para $dominio ya existe."
-    else
-        echo "Obteniendo y configurando certificado SSL para $dominio..."
-        sudo certbot --nginx -d $dominio
-    fi
-}
-
-# Obtener y configurar certificados SSL
-obtener_certificado datqbox.com
-obtener_certificado portafolio.datqbox.com
-obtener_certificado code.datqbox.com
-obtener_certificado blog.datqbox.com
-obtener_certificado crm.datqbox.com
-
 # Nombre de la red Docker
 NETWORK_NAME="webnet"
 
@@ -40,5 +13,10 @@ fi
 
 # Iniciar servicios con Docker Compose
 echo "Iniciando servicios..."
+docker-compose up -d
+
+# Opcional: Instrucciones para renovar los certificados SSL
+# Puedes agregar un cron job o un script para renovar los certificados
+
 docker-compose up -d
 

@@ -46,6 +46,26 @@ services:
     networks:
       - webnet
 
+  certbot:
+    image: certbot/certbot
+    volumes:
+      - /etc/letsencrypt:/etc/letsencrypt
+      - /var/www/certbot:/var/www/certbot
+    depends_on:
+      - nginx
+    command: >
+      certonly --webroot 
+      --webroot-path=/var/www/certbot 
+      --email raul.gonzalez@datqbox.com 
+      --agree-tos 
+      --no-eff-email 
+      --staging 
+      -d datqbox.com 
+      -d www.datqbox.com 
+      -d portafolio.datqbox.com 
+      -d code.datqbox.com 
+      -d blog.datqbox.com
+
 networks:
   webnet:
     external: true
