@@ -51,7 +51,7 @@ services:
     container_name: cerbot
     volumes:
       - /etc/letsencrypt:/etc/letsencrypt
-      - /var/www/certbot:/var/www/certbot
+      - /etc/letsencrypt:/var/www/certbot
     depends_on:
       - nginx
     command: >
