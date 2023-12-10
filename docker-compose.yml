@@ -25,6 +25,7 @@ services:
       #- ./conf.d:/etc/nginx/conf.d
       - /var/www/webapp/nginx/conf.d:/etc/nginx/conf.d 
       - /etc/letsencrypt:/etc/letsencrypt:ro
+    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
     restart: unless-stopped
     networks:
       - webnet
@@ -51,7 +52,7 @@ services:
     container_name: cerbot
     volumes:
       - /etc/letsencrypt:/etc/letsencrypt
-      - /etc/letsencrypt:/var/www/certbot
+      - /var/www/certbot:/var/www/certbot
     depends_on:
       - nginx
     command: >
@@ -72,6 +73,7 @@ services:
       -d pos.datqbox.com
       -d app.datqbox.com
       -d crm.datqbox.com
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
     networks:
       - webnet
 
