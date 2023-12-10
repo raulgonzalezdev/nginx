@@ -30,6 +30,37 @@ services:
     networks:
       - webnet
 
+  postgres:
+    image: postgres:latest
+    container_name: db_postgres
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+    networks:
+      - webnet
+  
+  backend:
+    build: ../datqbox-backend
+    container_name: datqbox-backend
+    image: datqbox-backend
+    ports:
+      - "3000:3000"
+    environment:
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+      - DB_NAME=ecommerce
+    depends_on:
+      - postgres
+    networks:
+      - webnet
  
 
   code-server:
@@ -76,6 +107,10 @@ services:
     entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
     networks:
       - webnet
+
+volumes:
+  postgres_data:
+
 
 networks:
   webnet:
