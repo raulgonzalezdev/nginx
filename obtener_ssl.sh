@@ -2,14 +2,15 @@
 
 # Lista de dominios para los que se generará el certificado SSL
 DOMINIOS=(
-    "datqbox.com"
-    "www.datqbox.com"
-    "portafolio.datqbox.com"
-    "code.datqbox.com"
-    "blog.datqbox.com"
-    "pos.datqbox.com"
-    "app.datqbox.com"
-    "crm.datqbox.com"
+    "api.datqbox.com"
+    # "datqbox.com"
+    # "www.datqbox.com"
+    # "portafolio.datqbox.com"
+    # "code.datqbox.com"
+    # "blog.datqbox.com"
+    # "pos.datqbox.com"
+    # "app.datqbox.com"
+    # "crm.datqbox.com"
 )
 
 # Detener nginx-proxy
