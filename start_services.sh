@@ -25,6 +25,7 @@ obtener_certificado datqbox.com
 obtener_certificado portafolio.datqbox.com
 obtener_certificado code.datqbox.com
 obtener_certificado blog.datqbox.com
+obtener_certificado crm.datqbox.com
 
 # Nombre de la red Docker
 NETWORK_NAME="webnet"
