@@ -1,6 +1,18 @@
 version: '3.8'
 services:
  
+  app:
+    build: ../strong-solstice
+    container_name: app
+    volumes:
+      - /var/www/webapp/strong-solstice:/app
+    ports:
+      - "4321:4321" #
+    restart: unless-stopped
+    environment:
+      - HOST=0.0.0.0
+    networks:
+      - webnet
 
   nginx:
     image: nginx:latest
@@ -16,18 +28,7 @@ services:
     networks:
       - webnet
 
-  app:
-    build: ../strong-solstice
-    container_name: app
-    volumes:
-      - /var/www/webapp/strong-solstice:/app
-    ports:
-      - "4321:4321" #
-    restart: unless-stopped
-    environment:
-      - HOST=0.0.0.0
-    networks:
-      - webnet
+ 
 
   code-server:
     build: ../code
