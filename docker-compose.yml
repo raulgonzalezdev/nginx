@@ -11,9 +11,9 @@ services:
       - "4321:4321" #
     environment:
       - HOST=0.0.0.0
-    restart: always
-    networks:
-      - webnet
+    restart: unless-stopped
+    #networks:
+     # - webnet
 
   nginx:
     image: nginx:latest
@@ -25,9 +25,9 @@ services:
       #- ./conf.d:/etc/nginx/conf.d
       - /var/www/webapp/nginx/conf.d:/etc/nginx/conf.d 
       - /etc/letsencrypt:/etc/letsencrypt:ro
-    restart: always
-    networks:
-      - webnet
+    restart: unless-stopped
+    #networks:
+     # - webnet
 
  
 
@@ -46,7 +46,7 @@ services:
     networks:
       - webnet
 
-networks:
-  webnet:
-    external: true
+#networks:
+ # webnet:
+  #  external: true
 
