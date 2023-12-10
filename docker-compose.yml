@@ -4,6 +4,7 @@ services:
   app:
     build: ../strong-solstice
     container_name: app
+    image: astroapp
     volumes:
       - /var/www/webapp/strong-solstice:/app
     ports:
