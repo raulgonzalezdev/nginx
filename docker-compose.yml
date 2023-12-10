@@ -65,6 +65,9 @@ services:
       -d portafolio.datqbox.com 
       -d code.datqbox.com 
       -d blog.datqbox.com
+      -d pos.datqbox.com
+      -d app.datqbox.com
+      -d crm.datqbox.com
 
 networks:
   webnet:
