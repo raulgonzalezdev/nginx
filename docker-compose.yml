@@ -20,7 +20,7 @@ services:
     container_name: datqbox-pos
     image: datqbox-pos
     ports:
-      - "4321:80"
+      - "3000:80"
     networks:
       - webnet
 
