@@ -14,6 +14,15 @@ services:
     restart: unless-stopped
     networks:
       - webnet #
+  
+  datqbox-pos:
+    build: ../datqbox-pos
+    container_name: datqbox-pos
+    image: datqbox-pos
+    ports:
+      - "4321:80"
+    networks:
+      - webnet
 
   nginx:
     image: nginx:latest
