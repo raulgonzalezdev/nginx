@@ -125,4 +125,5 @@ volumes:
 networks:
   webnet:
     external: true
+    driver: bridge
 
