@@ -66,11 +66,15 @@ services:
       - DB_USER=postgres
       - DB_PASSWORD=postgres
       - DB_NAME=ecommerce
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
     depends_on:
       - postgres
       - redis
     networks:
       - webnet
+  
+  
  
 
   code-server:
