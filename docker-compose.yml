@@ -85,11 +85,10 @@ services:
       - redis
     networks:
       - webnet
-  
-  
+ 
  
 
-   code-server:
+  code-server:
      build: ../code
      image: codercom/code-server:latest
      user: "1001:1002" # Reemplaza con tu UID y GID reales
