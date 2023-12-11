@@ -129,6 +129,7 @@ services:
       -d pos.datqbox.com
       -d app.datqbox.com
       -d crm.datqbox.com
+      -d api.datqbox.com
     entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
     networks:
       - webnet
